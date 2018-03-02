@@ -8,17 +8,21 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text, 
-  View
+  View,
+  Button
 } from 'react-native';
 
 type Props = {};
-export default class GuideScreen extends Component<Props> {
+export default class WhatPlantScreen extends Component<Props> {
   static navigationOptions = {
-    title: 'Guia Básico de cultivo',
+    title: 'Que planta é essa?',
   };
   render() {
     return (
-      <View><Text>Guia de cultivo</Text></View>
+      <View>
+      	<Text>Que planta é essa?</Text> 
+      	<Button title="Inicio" onPress={() => this.props.navigation.navigate('Dashboard')} />
+      </View>
     );
   }
 }
