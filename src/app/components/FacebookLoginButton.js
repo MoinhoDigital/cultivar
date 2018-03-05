@@ -7,7 +7,7 @@ const FBSDK = require('react-native-fbsdk');
 const {
   LoginButton,
   AccessToken
-} = FBSDK;
+} = FBSDK; 
 
 export default class FacebookLoginButton extends Component {
   render() {
