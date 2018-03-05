@@ -11,6 +11,7 @@ import {
   View,
   Button
 } from 'react-native';
+import VisiblePlants from '../containers/VisiblePlants'
 
 type Props = {};
 export default class WhatPlantScreen extends Component<Props> {
@@ -20,6 +21,8 @@ export default class WhatPlantScreen extends Component<Props> {
   render() {
     return (
       <View>
+        <VisiblePlants />     
+       
       	<Text>Que planta é essa?</Text> 
       	<Button title="Inicio" onPress={() => this.props.navigation.navigate('Dashboard')} />
       </View>

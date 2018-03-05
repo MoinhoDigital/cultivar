@@ -6,28 +6,22 @@ import {
   View,
   ScrollView
 } from 'react-native'
-// import Navigator from '../routers/Navigator'
-// import LoginNavigator from '../routers/LoginNavigator'
-import AddPlant from '../containers/AddPlant'
-import VisiblePlants from '../containers/VisiblePlants'
+import Navigator from '../routers/Navigator'
+import LoginNavigator from '../routers/LoginNavigator'
 
-// const Greeting = (props) => {
-//   if (props.isLoggedIn) {
-//     console.log("User logged in")
-//     return <Navigator/>        
-//   } 
-//   return <LoginNavigator/>  
-// }
+const Greeting = (props) => {
+  if (props.isLoggedIn) {
+    console.log("User logged in")
+    return <Navigator/>        
+  } 
+  return <LoginNavigator/>  
+}
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View>
-        <AddPlant />
-        <VisiblePlants />    
-        {/*<Greeting isLoggedIn={false}/>*/}
-      </View>
+      <Greeting isLoggedIn={true}/>
     );
   }
 }
