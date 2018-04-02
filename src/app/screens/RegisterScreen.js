@@ -5,7 +5,7 @@ import {
   View, 
   Button
 } from 'react-native';
-import FacebookLoginButton from '../components/FacebookLoginButton'
+import FacebookLogin from '../containers/FacebookLogin'
 
 type Props = {};
 export default class RegisterScreen extends Component<Props> {
@@ -13,7 +13,7 @@ export default class RegisterScreen extends Component<Props> {
     return (
       <View> 
         <Text>Register screen</Text> 
-        <FacebookLoginButton/>
+        <FacebookLogin/>
       </View>
     );
   }

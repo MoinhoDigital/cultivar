@@ -1,25 +1,33 @@
-import React from 'react'
-import { 
+import React, { Component } from 'react'
+import {
+	ActivityIndicator,
+  View, 
+  Text,
   FlatList
 } from 'react-native'
-import PropTypes from 'prop-types'
 import Plant from './Plant'
 
-const PlantList = ({ plants, onPlantClick }) => (
-  <FlatList
-    data={plants}
-    renderItem={({item}) => ( <Plant {...item} onPress={()=> onPlantClick(item.id)}>{item.key}</Plant> )}
-    keyExtractor={(item, index) => index+'ddd'}
-  />  
-)  
-
-PlantList.propTypes = {
-  plants: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  onPlantClick: PropTypes.func.isRequired
+class PlantList extends Component {
+	render () {
+		console.log("this.props.data")
+		console.log(this.props.data)
+	  return (
+	  	<View>
+	  		<Text>{this.props.loading}</Text>
+		    { this.props.data.loading ? (
+					<ActivityIndicator animating={this.props.data.loading} />
+	    	) : (
+		    	this.props.data.loading ? (
+		    		<FlatList data={this.props.data.allPlants} renderItem={({item}) => <Plant data={item} />} keyExtractor={(item, index) => index.toString()} />
+		    	) : (
+		    		this.props.data.allPlants.map(plant => (
+				      <Plant data={plant} key={plant.id}/>
+				    ))
+		    	)
+		    )} 
+	  	</View>
+	  )     
+	} 
 }
 
 export default PlantList

@@ -37,9 +37,11 @@ const DashboardStack = TabNavigator({
       const { routeName } = navigation.state;
       let iconName;
       if (routeName === 'Dashboard') {
-        iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+        iconName = `ios-home${focused ? '' : '-outline'}`;
       } else if (routeName === 'Guide') {
-        iconName = `ios-options${focused ? '' : '-outline'}`;
+        iconName = `ios-book${focused ? '' : '-outline'}`;
+      } else if (routeName === 'WhatPlant') {
+        iconName = `ios-camera${focused ? '' : '-outline'}`;
       }
 
       // You can return any component that you like here! We usually use an

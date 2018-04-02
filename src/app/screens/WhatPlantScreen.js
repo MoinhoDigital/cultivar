@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -11,18 +5,14 @@ import {
   View,
   Button
 } from 'react-native';
-import VisiblePlants from '../containers/VisiblePlants'
 
-type Props = {};
-export default class WhatPlantScreen extends Component<Props> {
+export default class WhatPlantScreen extends Component {
   static navigationOptions = {
     title: 'Que planta é essa?',
   };
   render() {
     return (
       <View>
-        <VisiblePlants />     
-       
       	<Text>Que planta é essa?</Text> 
       	<Button title="Inicio" onPress={() => this.props.navigation.navigate('Dashboard')} />
       </View>
