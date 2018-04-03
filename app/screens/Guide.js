@@ -4,15 +4,12 @@ import {
   Text, 
   View
 } from 'react-native';
-import PlantList from '../containers/PlantListWithData';
 
-type Props = {};
-export default class GuideScreen extends Component<Props> {
+export default class Guide extends Component {
   render() {
     return (
       <View>
       	<Text>Guia de cultivo</Text>
-        <PlantList />  
       </View>
     );
   } 

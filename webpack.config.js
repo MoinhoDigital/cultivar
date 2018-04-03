@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const appDirectory = path.resolve(__dirname, '../');
+const appDirectory = path.resolve(__dirname, './');
 
 // This is needed for webpack to compile JavaScript.
 // Many OSS React Native packages are not compiled to ES5 before being
@@ -13,7 +13,7 @@ const babelLoaderConfiguration = {
   // Add every directory that needs to be compiled by Babel during the build.
   include: [
     path.resolve(appDirectory, 'index.web.js'),
-    path.resolve(appDirectory, 'src'),
+    path.resolve(appDirectory, 'app'),
     path.resolve(appDirectory, 'node_modules/react-native-uncompiled'),
     path.resolve(appDirectory, 'node_modules/react-navigation'),
     path.resolve(appDirectory, 'node_modules/react-native-tab-view'),
@@ -22,6 +22,7 @@ const babelLoaderConfiguration = {
     path.resolve(appDirectory, 'node_modules/react-native-safe-area-view'),
     path.resolve(appDirectory, 'node_modules/react-native-drawer-layout'),
     path.resolve(appDirectory, 'node_modules/react-native-dismiss-keyboard'),
+    path.resolve(appDirectory, 'node_modules/react-native-elements'),
   ],
   use: {
     loader: 'babel-loader',
@@ -56,12 +57,15 @@ const iconLoaderConfiguration = {
 
 module.exports = {
   // your web-specific entry file
-  entry: path.resolve(appDirectory, 'index.web.js'),
+  // entry: path.resolve(appDirectory, 'index.web.js'),
+  entry: {
+    index: ['babel-polyfill', path.resolve(appDirectory, 'index.web.js')]
+  },
 
   // configures where the build ends up
   output: {
     filename: 'bundle.web.js',
-    path: path.resolve(appDirectory, 'dist')
+    path: path.resolve(appDirectory, 'web')
   },
 
   // ...the rest of your config
@@ -85,7 +89,7 @@ module.exports = {
   ],
   
   devServer: {
-    contentBase: path.resolve(appDirectory, 'dist'),
+    contentBase: path.resolve(appDirectory, 'web'),
     compress: true
   },
 

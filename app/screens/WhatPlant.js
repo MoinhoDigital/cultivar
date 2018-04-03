@@ -6,7 +6,7 @@ import {
   Button
 } from 'react-native';
 
-export default class WhatPlantScreen extends Component {
+export default class WhatPlant extends Component {
   static navigationOptions = {
     title: 'Que planta é essa?',
   };

@@ -12,21 +12,26 @@ import {
   View,
   ScrollView
 } from 'react-native';
-import DashboardScreen from '../screens/DashboardScreen';
-import GuideScreen from '../screens/GuideScreen';
-import WhatPlantScreen from '../screens/WhatPlantScreen';
+import Dashboard from '../screens/Dashboard';
+import Guide from '../screens/Guide';
+import Catalog from '../screens/Catalog';
+import WhatPlant from '../screens/WhatPlant';
+import Drawer from '../screens/Drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { DrawerNavigator, DrawerItems, TabNavigator, TabBarBottom } from 'react-navigation';
- 
+
 const DashboardStack = TabNavigator({
   Dashboard: {
-    screen: DashboardScreen, 
+    screen: Dashboard, 
   },
   Guide: {
-    screen: GuideScreen, 
+    screen: Guide, 
+  },
+  Catalog: {
+    screen: Catalog,
   },
   WhatPlant: {
-    screen: WhatPlantScreen,
+    screen: WhatPlant,
   },
 },
 {
@@ -40,6 +45,8 @@ const DashboardStack = TabNavigator({
         iconName = `ios-home${focused ? '' : '-outline'}`;
       } else if (routeName === 'Guide') {
         iconName = `ios-book${focused ? '' : '-outline'}`;
+      } else if (routeName === 'Catalog') {
+        iconName = `ios-list${focused ? '' : '-outline'}`;
       } else if (routeName === 'WhatPlant') {
         iconName = `ios-camera${focused ? '' : '-outline'}`;
       }
@@ -49,48 +56,19 @@ const DashboardStack = TabNavigator({
       return <Ionicons name={iconName} size={25} color={tintColor} />;
     },
   }),
-  tabBarOptions: {
-    activeTintColor: 'tomato',
-    inactiveTintColor: 'gray',
-  }, 
   tabBarComponent: TabBarBottom,
   tabBarPosition: 'bottom',
-  animationEnabled: false,
-  swipeEnabled: false,
+  animationEnabled: true,
+  swipeEnabled: true,
 
 });
 
-const RootStack = DrawerNavigator({
+export default RootStack = DrawerNavigator({
   DashboardStack: {
     screen: DashboardStack, 
   },
 },
 {
   initialRouteName: 'DashboardStack',
-  contentComponent: (props) => (
-    <View >
-      <ScrollView>
-        <Text>Drawer View</Text>
-        
-        <DrawerItems
-          {...props}
-          getLabel = {(scene) => (
-            <View> 
-              <Text>{props.getLabel(scene)}</Text> 
-              <Text>{props.getLabel(scene)}</Text> 
-            </View>
-          )}
-        /> 
-        </ScrollView>
-      </View>
-    )
+  contentComponent: (props) => <Drawer navigation={props.navigation}/>
 });
-
-type Props = {};
-export default class Navigator extends Component<Props> {
-  render() {
-    return ( 
-      <RootStack/>        
-    );
-  }
-}

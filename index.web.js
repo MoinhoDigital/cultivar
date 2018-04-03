@@ -4,7 +4,7 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import App from './src/App' //Import the component file
+import App from './app/index' //Import the component file
 
 // Enable using vector-icons on web version
 import Icon from 'react-native-vector-icons/dist/Ionicons';
