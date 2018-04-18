@@ -1,33 +1,31 @@
 import React, { Component } from 'react'
-import {
-	ActivityIndicator,
-  View, 
-  Text,
-  FlatList
-} from 'react-native'
-import Plant from './Plant'
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
 
-class PlantList extends Component {
-	render () {
-		console.log("this.props.data")
-		console.log(this.props.data)
-	  return (
-	  	<View>
-	  		<Text>{this.props.loading}</Text>
-		    { this.props.data.loading ? (
-					<ActivityIndicator animating={this.props.data.loading} />
-	    	) : (
-		    	this.props.data.loading ? (
-		    		<FlatList data={this.props.data.allPlants} renderItem={({item}) => <Plant data={item} />} keyExtractor={(item, index) => index.toString()} />
-		    	) : (
-		    		this.props.data.allPlants.map(plant => (
-				      <Plant data={plant} key={plant.id}/>
-				    ))
-		    	)
-		    )} 
-	  	</View>
-	  )     
-	} 
-}
+const GET_DOGS = gql`
+  {
+    allPlants {
+      id
+      binomial
+    }
+  }
+`;
 
-export default PlantList
+export default Dogs = ({ onDogSelected }) => (
+  <Query query={GET_DOGS}>
+    {({ loading, error, data }) => {
+      if (loading) return "Loading...";
+      if (error) return `Error! ${error.message}`;
+
+      return (
+        <select name="dog" onChange={onDogSelected}>
+          {data.dogs.map(dog => (
+            <option key={dog.id} value={dog.breed}>
+              {dog.breed}
+            </option>
+          ))}
+        </select>
+      );
+    }}
+  </Query>
+);

@@ -30,6 +30,12 @@ functions:
         src: ./src/facebook/loggedInUser.ts
     type: resolver
     schema: ./src/facebook/loggedInUser.graphql
+  signup:
+    handler:
+      code:
+        src: ./src/auth/signup.js
+    type: resolver
+    schema: ./src/auth/signup.graphql
 
 # Model/Relation permissions are used to limit the API access
 # To take the burden of thinking about those while development, we

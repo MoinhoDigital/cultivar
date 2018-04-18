@@ -16,7 +16,7 @@ export default ({ navigation }) => (
         backgroundColor="#03A9F4"
         title="SIGN IN"
         onPress={() => {
-          onSignIn().then(() => navigation.navigate("SignedIn"));
+          onSignIn(this.props).then(() => navigation.navigate("SignedIn"));
         }}
       />
     </Card>

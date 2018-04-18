@@ -5,7 +5,7 @@ import {
   View,
   Button
 } from 'react-native';
-import PlantList from '../containers/PlantListWithData';
+import PlantList from '../components/PlantList';
 
 export default class WhatPlant extends Component {
   static navigationOptions = {

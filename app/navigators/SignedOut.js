@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StatusBar } from "react-native";
 import { TabNavigator } from 'react-navigation';
-import SignUp from "../screens/SignUp";
+import SignUp from "../containers/SignUp";
 import SignIn from "../screens/SignIn";
 
 const headerStyle = {
